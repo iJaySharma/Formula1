@@ -1,0 +1,40 @@
+<div class="dropdown">
+  <button class="btn btn-outline-success dropdown-toggle" type="button" id="driversDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    Drivers
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="driversDropdown">
+    <li *ngFor="let driver of drivers" class="dropdown-item clickable" (click)="openDriverDetailsModal(driver)">
+      {{ driver.first_name }} {{ driver.last_name }}
+    </li>
+  </ul>
+</div>
+
+<div class="modal fade" id="driverDetailsModal" tabindex="-1" aria-labelledby="driverDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="driverDetailsModalLabel">Driver Details</h5>
+      </div>
+      <div class="modal-body">
+       <!-- Driver details content goes here -->
+<p><strong>First Name:</strong> {{ selectedDriver?.first_name }}</p>
+<p><strong>Last Name:</strong> {{ selectedDriver?.last_name }}</p>
+<p><strong>Years Active:</strong> {{ selectedDriver?.year_active }}</p>
+<p><strong>Nationality:</strong> {{ selectedDriver?.nationality }}</p>
+<p><strong>Points:</strong> {{ selectedDriver?.point }}</p>
+<br>
+<h4>Team Details</h4>
+<br>
+<!-- Display team details -->
+<p><strong>Team Name:</strong> {{ selectedDriver?.Team?.team_name }}</p>
+<p><strong>Principal:</strong> {{ selectedDriver?.Team?.principal }}</p>
+<p><strong>Engine Supplier:</strong> {{ selectedDriver?.Team?.engine_supplier }}</p>
+<p><strong>Country Represent:</strong> {{ selectedDriver?.Team?.country_represent }}</p>
+</div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="closeDriverDetailsModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

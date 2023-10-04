@@ -1,0 +1,57 @@
+<div class="container-fluid"> 
+    <div class="row">
+      <div class="col-md-12"> 
+        <h3>Team Details</h3>
+        <table class="table table-striped table-bordered custom-table">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th>Serial Number</th>
+              <th>Team Name</th>
+              <th>Principal</th>
+              <th>Engine Supplier</th>
+              <th>Country Represent</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let team of teams; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ team.team_name }}</td>
+              <td>{{ team.principal }}</td>
+              <td>{{ team.engine_supplier }}</td>
+              <td>{{ team.country_represent }}</td>
+              <td>
+                <button class="btn btn-primary" (click)="seeAssociatedDrivers(team.team_id)">See Associated Drivers End of Page</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row" *ngIf="showDriversTable">
+      <div class="col-md-12">
+        <h3>Associated Drivers</h3>
+        <table class="table table-striped table-bordered custom-table">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th>Serial Number</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Year Active</th>
+              <th>Nationality</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let driver of drivers; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ driver.first_name }}</td>
+              <td>{{ driver.last_name }}</td>
+              <td>{{ driver.year_active }}</td>
+              <td>{{ driver.nationality }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

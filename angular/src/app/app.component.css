@@ -1,0 +1,36 @@
+/* styles.css */
+.formula-text {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 40px;
+  }
+  
+  .color1 {
+    color: #ff5733; 
+  }
+  
+  .spacer {
+    margin-right: 20px;
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .form-select {
+    width: 225px; 
+  }
+  
+  .btn-primary {
+    margin-left: 10px; 
+  }
+  
+  select.form-select {
+    color: darkgreen;
+    border-color:darkgreen; 
+  }
+
+  
+  

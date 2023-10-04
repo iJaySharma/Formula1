@@ -1,0 +1,47 @@
+INSERT INTO DriverRace (driver_id, race_id)
+SELECT d.driver_id, r.race_id
+FROM (
+    SELECT driver_id
+    FROM driver
+    WHERE driver_id BETWEEN 1 AND 84
+    ORDER BY RAND()
+    LIMIT 30
+) AS d
+CROSS JOIN (
+    SELECT race_id
+    FROM race
+    WHERE race_id BETWEEN 1 AND 20
+) AS r;
+
+
+-- Insert data into the result table
+INSERT INTO result (position, podium, fastest_lap_rate, win_rate, race_id, driver_id)
+SELECT
+    subquery.position,
+    CASE
+        WHEN subquery.position <= 3 THEN subquery.position
+        ELSE NULL
+    END AS podium,
+    ROUND(RAND(), 2) AS fastest_lap_rate,
+    ROUND(RAND(), 5) AS win_rate,
+    subquery.race_id,
+    subquery.driver_id
+FROM (
+    SELECT
+        dr.driver_id,
+        dr.race_id,
+        @row_number := CASE
+            WHEN @current_race = dr.race_id THEN @row_number + 1
+            ELSE 1
+        END AS position,
+        @current_race := dr.race_id
+    FROM (
+        SELECT DISTINCT driver_id, race_id
+        FROM DriverRace
+    ) dr
+    JOIN (
+        SELECT @row_number := 0, @current_race := 0
+    ) AS init
+    ORDER BY dr.race_id, RAND()
+) AS subquery;
+

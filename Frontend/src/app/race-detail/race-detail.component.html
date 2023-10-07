@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-12"> 
+    <h3>Race Details</h3>
+    <table class="table table-striped table-bordered custom-table">
+      <thead class="bg-primary text-white">
+        <tr>
+          <th>Serial Number</th>
+          <th>Race Name</th>
+          <th>Race Date</th>
+          <th>Race Season</th>
+          <th>Race Location</th>
+          <th>Driver Action</th>
+          <th>Result Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let race of races; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ race.race_name }}</td>
+          <td>{{ race.race_date }}</td>
+          <td>{{ race.race_season }}</td>
+          <td>{{ race.race_location }}</td>
+          <td>
+            <button [routerLink]="['/drivers', race.race_id]">See Participated Drivers</button>
+          </td>
+          <td>
+            <button [routerLink]="['/results', race.race_id]">See LeaderBoard</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

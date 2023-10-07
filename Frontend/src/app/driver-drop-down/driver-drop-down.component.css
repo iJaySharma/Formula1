@@ -1,0 +1,17 @@
+
+.dropdown-menu {
+    max-height: 200px; 
+    overflow-y: auto;
+  }
+
+.modal {
+  display: none;
+}
+
+.modal.show {
+  display: block;
+}
+
+.clickable {
+  cursor: pointer;
+}

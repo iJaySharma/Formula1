@@ -1,0 +1,77 @@
+<!-- app.component.html -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <!-- Style Formula 1 -->
+    <a class="navbar-brand">
+      <span class="formula-text">
+        <strong><em>F</em></strong> <span class="color1">1</span>
+      </span>
+    </a>
+    <!-- Add some spacing -->
+    <div class="spacer"></div>
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-success" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-danger" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-warning" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border text-dark" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <div class="spacer"></div>
+    <div class="spacer"></div>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/team-details']">Teams</a>
+        </li>    
+        <div class="spacer"></div>
+    <div class="spacer"></div>
+      
+        <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+<app-driver-drop-down></app-driver-drop-down>
+      </ul>
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+      <div class="container">
+        <!-- Dropdown for Season -->
+        <select class="form-select" [(ngModel)]="selectedSeason" (ngModelChange)="selectSeason($event)">
+          <option value="" disabled selected>Select Seasons for Result</option>
+          <option *ngFor="let season of seasons" [value]="season">Season : {{ season }}</option>
+        </select>
+    
+        <!-- "Result" Button as a link to Result component -->
+        <a *ngIf="selectedRaceId" [routerLink]="['/results', selectedRaceId]" class="btn btn-primary ml-2">Show Result</a>
+      </div>
+      </div>
+  </div>
+</nav>
+
+  <router-outlet></router-outlet>
+<!-- app.component.html -->
+
+

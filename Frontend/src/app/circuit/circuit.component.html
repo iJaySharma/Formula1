@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="content-container">
+      <div *ngFor="let circuit of circuits;let i = index" class="circuit-card">
+        <img src="assets/circuit{{ i + 1 }}.jpg" alt="{{ circuit.circuit_name }}" class="circuit-image">
+        <h3>{{ circuit.circuit_name }}</h3>
+        <p>Location: {{ circuit.location }}</p>
+        <p>Length: {{ circuit.length }} km</p>
+        <p>Capacity: {{ circuit.capacity }}</p>
+        <button [routerLink]="['/', circuit.location]">See Races Played Here</button>
+      </div>
+    </div>
+  </div>
